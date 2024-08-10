@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/log', 'LogController@logService');
+Route::get('/services', [ServiceController::class, 'index']);

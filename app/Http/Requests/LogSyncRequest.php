@@ -12,7 +12,7 @@ class LogSyncRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,6 +28,7 @@ class LogSyncRequest extends FormRequest
             'rrule.freq' => 'required|string',
             'rrule.interval' => 'required|integer',
             'rrule.count' => 'required|integer',
+            'status' => 'required|bool',
             'data' => 'optional|array',
         ];
     }
