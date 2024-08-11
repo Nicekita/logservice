@@ -2,18 +2,23 @@
 
 namespace App\Models;
 
+use App\Enums\Frequency;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Service extends Model
 {
 
     protected $fillable = [
         'key',
-        'rrule',
+        'count',
+        'interval',
+        'freq',
     ];
 
     protected $casts = [
-        'rrule' => 'array',
+        'freq' => Frequency::class,
     ];
+
     public $timestamps = false;
 }

@@ -1,4 +1,4 @@
-### Calculate Price
+### Лог сервиса
 POST http://127.0.0.1/api/log
 Accept: application/json
 Content-Type: application/json
@@ -6,18 +6,10 @@ Bearer: 8bb042b0-9a41-48c3-bbea-3a4ae215c8bc
 
 {
   "key": "request.test",
-  "rrule": {
-    "freq": "DAILY",
+    "freq": "HOURLY",
     "count": 5,
-    "interval": 1
-  }
+    "interval": 1,
+    "status": true
 }
 
-### Calculate Price
-GET http://127.0.0.1/services/
-Accept: application/json
-Content-Type: application/json
-
-{
-}
 

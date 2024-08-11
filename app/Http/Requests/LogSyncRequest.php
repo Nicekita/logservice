@@ -24,10 +24,9 @@ class LogSyncRequest extends FormRequest
     {
         return [
             'key' => 'required|string',
-            'rrule' => 'required|array',
-            'rrule.freq' => 'required|string',
-            'rrule.interval' => 'required|integer',
-            'rrule.count' => 'required|integer',
+            'freq' => 'required|string',
+            'interval' => 'required|integer',
+            'count' => 'required|integer',
             'status' => 'required|bool',
             'data' => 'optional|array',
         ];

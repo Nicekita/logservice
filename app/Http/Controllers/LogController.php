@@ -19,28 +19,27 @@ class LogController extends Controller
     }
     public function logService(LogSyncRequest $request): JsonResponse
     {
-        $data = $request->validated();
+        $request = $request->validated();
 
-        $service = $this->services->where('key', $data['key'])->first();
+        $service = $this->services->where('key', $request['key'])->first();
         if (!$service) {
-            $service = $this->services->create([
-                'key' => $data['key'],
-                'rrule' => $data['rrule'],
-            ]);
+            $service = $this->services->create($request);
+        } else {
+            $service->update($request);
         }
 
-        if (!$data['status']) {
-            $this->logs->create([
-                'service_id' => $service->id,
-                'data' => $data['data'],
-            ]);
-            ServiceBroken::dispatch($service, $data['data']);
-            return response()->json(['message' => 'Log created successfully']);
-        }
+
+        $additionalData = $request['data'] ?? [];
         $this->logs->create([
             'service_id' => $service->id,
-            'data' => $data['data'],
+            'data' => $additionalData,
+            'status' => $request['status'],
         ]);
+
+        if (!$request['status']) {
+            ServiceBroken::dispatch($service, $additionalData);
+            return response()->json(['message' => 'Log created successfully. Service is broken.']);
+        }
 
         return response()->json(['message' => 'Log created successfully']);
     }
