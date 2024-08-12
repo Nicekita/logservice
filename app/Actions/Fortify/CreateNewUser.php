@@ -26,7 +26,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
             'app_key' => function (string $attribute, mixed $value, Closure $fail) {
-                if ($value === config('app.api_key')) {
+                if ($value !== config('app.api_key')) {
                     $fail("{$attribute} неверен.");
                 }
             },
