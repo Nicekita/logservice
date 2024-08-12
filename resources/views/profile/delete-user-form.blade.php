@@ -1,10 +1,10 @@
 <x-action-section>
     <x-slot name="title">
-        {{ __('Delete Account') }}
+        {{ __('Удалить аккаунт') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Permanently delete your account.') }}
+        {{ __('Навсегда удалить аккаунт.') }}
     </x-slot>
 
     <x-slot name="content">
@@ -14,14 +14,14 @@
 
         <div class="mt-5">
             <x-danger-button wire:click="confirmUserDeletion" wire:loading.attr="disabled">
-                {{ __('Delete Account') }}
+                {{ __('Удалить аккаунт') }}
             </x-danger-button>
         </div>
 
         <!-- Delete User Confirmation Modal -->
         <x-dialog-modal wire:model.live="confirmingUserDeletion">
             <x-slot name="title">
-                {{ __('Delete Account') }}
+                {{ __('Удалить аккаунт') }}
             </x-slot>
 
             <x-slot name="content">
@@ -41,11 +41,11 @@
 
             <x-slot name="footer">
                 <x-secondary-button wire:click="$toggle('confirmingUserDeletion')" wire:loading.attr="disabled">
-                    {{ __('Cancel') }}
+                    {{ __('Отмена') }}
                 </x-secondary-button>
 
                 <x-danger-button class="ms-3" wire:click="deleteUser" wire:loading.attr="disabled">
-                    {{ __('Delete Account') }}
+                    {{ __('Удалить аккаунт') }}
                 </x-danger-button>
             </x-slot>
         </x-dialog-modal>

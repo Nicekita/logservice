@@ -107,6 +107,7 @@ return [
         ),
     ],
 
+    'telegram' => env('APP_TELEGRAM_KEY'),
     /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver

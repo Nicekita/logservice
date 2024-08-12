@@ -35,11 +35,12 @@ class CheckServices
     {
 
         $actualLogs = $this->logsRepository->getLatestLogs($service);
-
-        if (count($actualLogs) < $service->count) {
+        $actualLogsCount = count($actualLogs);
+        if ($actualLogsCount < $service->count) {
             $lastLog = last($actualLogs);
             return [
                 'service_id' => $service->id,
+                'logs_count' => $actualLogsCount,
                 'data' => $lastLog['data'] ?? 'There is no logs for this service',
             ];
         }
